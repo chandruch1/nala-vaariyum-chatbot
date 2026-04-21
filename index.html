@@ -12,12 +12,6 @@
 </head>
 <body>
 
-<!-- ===== SPLIT LAYOUT WRAPPER ===== -->
-<div class="split-layout" id="splitLayout">
-
-  <!-- ===== LEFT PANEL — MAIN CONTENT (moved to left) ===== -->
-  <div class="content-panel" id="contentPanel">
-
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
@@ -81,7 +75,7 @@
               <span>திட்டங்கள் காண்க</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <button class="btn btn-secondary" onclick="openAndScrollToChatSidebar()">
+            <button class="btn btn-secondary" onclick="document.querySelector('flowise-chatbot').shadowRoot.querySelector('.flowise-chatbot-bubble').click()">
               <span>🤖 AI உதவியாளர்</span>
             </button>
           </div>
@@ -312,199 +306,43 @@
     </div>
 
     <!-- ===== BACK TO TOP ===== -->
-    <button class="back-to-top" id="backToTop" onclick="document.getElementById('contentPanel').scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-  </div><!-- end .content-panel -->
 
-  <!-- ===== RIGHT PANEL — FLOWISE CHATBOT ===== -->
-  <aside class="chat-sidebar collapsed" id="chatSidebar">
 
-    <!-- Resize Handle -->
-    <div class="chat-resize-handle" id="chatResizeHandle"></div>
-
-    <!-- Header -->
-    <div class="chat-sidebar-header">
-      <div class="chat-sidebar-brand">
-        <div class="chat-sidebar-avatar">🤖</div>
-        <div>
-          <div class="chat-sidebar-title">நலவறியும் AI உதவியாளர்</div>
-          <div class="chat-sidebar-status">
-            <span class="status-live-dot"></span>
-            Online — Flowise AI
-          </div>
-        </div>
-      </div>
-      <div class="chat-sidebar-actions">
-        <button class="csb-action-btn" onclick="reloadChatbot()" title="மீண்டும் ஏற்று">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M23 4v6h-6M1 20v-6h6"/>
-            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
-          </svg>
-        </button>
-        <button class="csb-action-btn" onclick="openChatNewTab()" title="புதிய Tab-ல் திற">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Chatbot iframe body -->
-    <div class="chat-sidebar-body">
-      <div class="chat-sidebar-loading" id="chatSidebarLoading">
-        <div class="csb-spinner"></div>
-        <p>AI உதவியாளர் தொடங்குகிறது...</p>
-      </div>
-      <iframe
-        id="chatFlowiseIframe"
-        src="https://cloud.flowiseai.com/chatbot/79a39e86-48c5-4fa3-98b4-97469a1aa2d0"
-        class="chat-flowise-iframe"
-        title="நலவறியும் AI Chatbot — Flowise"
-        frameborder="0"
-        allow="microphone"
-        onload="onChatIframeLoad()"
-      ></iframe>
-    </div>
-
-    <!-- Close toggle -->
-    <button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChatSidebar()" title="Hide/Show Chat">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-        <!-- Arrow pointing right (to close sidebar to the right) -->
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
-  </aside>
-
-</div><!-- end .split-layout -->
-
-<!-- ===== FLOATING CHATBOT ICON ===== -->
-<button class="chatbot-fab" id="chatbotFab" onclick="toggleChatSidebar()" title="AI உதவியாளரைத் திறக்க">
-  <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-  </svg>
-</button>
+<!-- ===== FLOWISE CHATBOT NATIVE WIDGET ===== -->
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "79a39e86-48c5-4fa3-98b4-97469a1aa2d0",
+        apiHost: "https://cloud.flowiseai.com",
+        theme: {
+            button: {
+                backgroundColor: "#2196f3",
+                customIconSrc: "https://raw.githubusercontent.com/WalkxCode/dashboard-icons/main/png/flowise.png",
+                size: "large"
+            },
+            chatWindow: {
+                title: "நலவறியும் AI உதவியாளர்",
+                titleAvatarSrc: "https://raw.githubusercontent.com/WalkxCode/dashboard-icons/main/png/flowise.png",
+                welcomeMessage: "வணக்கம்! நான் நலவறியும் AI உதவியாளர். உங்களுக்கு எப்படி உதவட்டும்?",
+                backgroundColor: "#ffffff",
+                height: 600,
+                width: 400,
+                fontSize: 16
+            }
+        }
+    })
+</script>
 
 <script src="app.js"></script>
 <script>
-/* ===== SPLIT LAYOUT & CHAT SIDEBAR LOGIC ===== */
 
-const FLOWISE_URL = 'https://cloud.flowiseai.com/chatbot/79a39e86-48c5-4fa3-98b4-97469a1aa2d0';
-
-/* Iframe load callback */
-function onChatIframeLoad() {
-  const loading = document.getElementById('chatSidebarLoading');
-  if (loading) {
-    loading.classList.add('hidden');
-    setTimeout(() => loading.remove(), 500);
-  }
-}
-
-/* Reload chatbot */
-function reloadChatbot() {
-  const iframe = document.getElementById('chatFlowiseIframe');
-  const loading = document.getElementById('chatSidebarLoading');
-  if (loading) loading.classList.remove('hidden');
-  iframe.src = FLOWISE_URL;
-}
-
-/* Open chatbot in new tab */
-function openChatNewTab() {
-  window.open(FLOWISE_URL, '_blank');
-}
-
-/* Toggle sidebar collapse */
-let sidebarCollapsed = true;
-function toggleChatSidebar() {
-  const sidebar = document.getElementById('chatSidebar');
-  const fab = document.getElementById('chatbotFab');
-  
-  sidebarCollapsed = !sidebarCollapsed;
-  sidebar.classList.toggle('collapsed', sidebarCollapsed);
-  
-  if (sidebarCollapsed) {
-    fab.classList.remove('hidden-fab');
-  } else {
-    fab.classList.add('hidden-fab');
-    // Ensure on mobile it might scroll if needed
-  }
-  
-  localStorage.setItem('chatSidebarCollapsed', sidebarCollapsed);
-}
-
-function openAndScrollToChatSidebar() {
-  const sidebar = document.getElementById('chatSidebar');
-  if (sidebarCollapsed) {
-    toggleChatSidebar();
-  }
-  if (window.innerWidth <= 768) {
-    sidebar.scrollIntoView({behavior:'smooth'});
-  }
-}
-
-/* Restore sidebar state */
-(function() {
-  const saved = localStorage.getItem('chatSidebarCollapsed');
-  const sidebar = document.getElementById('chatSidebar');
-  const fab = document.getElementById('chatbotFab');
-  
-  // Default is collapsed, so if 'false', we open it.
-  if (saved === 'false') {
-    sidebar.classList.remove('collapsed');
-    sidebarCollapsed = false;
-    fab.classList.add('hidden-fab');
-  } else {
-    sidebar.classList.add('collapsed');
-    sidebarCollapsed = true;
-    fab.classList.remove('hidden-fab');
-  }
-})();
-
-/* ===== RESIZABLE SIDEBAR ===== */
-(function() {
-  const handle = document.getElementById('chatResizeHandle');
-  const sidebar = document.getElementById('chatSidebar');
-  if (!handle || !sidebar) return;
-
-  let isResizing = false;
-  let startX, startW;
-
-  handle.addEventListener('mousedown', function(e) {
-    isResizing = true;
-    startX = e.clientX;
-    startW = sidebar.offsetWidth;
-    handle.classList.add('dragging');
-    document.body.classList.add('resizing');
-    e.preventDefault();
-  });
-
-  document.addEventListener('mousemove', function(e) {
-    if (!isResizing) return;
-    const delta = e.clientX - startX;
-    const newW = Math.min(Math.max(startW - delta, 280), 600);
-    sidebar.style.width = newW + 'px';
-  });
-
-  document.addEventListener('mouseup', function() {
-    if (!isResizing) return;
-    isResizing = false;
-    handle.classList.remove('dragging');
-    document.body.classList.remove('resizing');
-    localStorage.setItem('chatSidebarWidth', sidebar.offsetWidth);
-  });
-
-  // Restore saved width
-  const savedW = localStorage.getItem('chatSidebarWidth');
-  if (savedW) sidebar.style.width = savedW + 'px';
-})();
-
-/* ===== NAVBAR SCROLL — scoped to content panel ===== */
-const contentPanel = document.getElementById('contentPanel');
-contentPanel.addEventListener('scroll', function() {
+/* ===== SCROLL BEHAVIOR ===== */
+window.addEventListener('scroll', function() {
   const nav = document.getElementById('navbar');
   const backTop = document.getElementById('backToTop');
-  if (contentPanel.scrollTop > 60) {
+  if (window.scrollY > 60) {
     nav.classList.add('scrolled');
     if (backTop) backTop.classList.add('visible');
   } else {
