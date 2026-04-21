@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>நலவறியும் – தமிழ்நாடு தொழிலாளர் நல தகவல் மையம்</title>
+  <meta name="description" content="தமிழ்நாடு தொழிலாளர் நல திட்டங்கள் – கல்வி, திருமணம், மரணம், மருத்துவம் – எல்லாவற்றையும் ஒரே இடத்தில் அறியுங்கள்." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="layout.css" />
+</head>
+<body>
+
+<!-- ===== SPLIT LAYOUT WRAPPER ===== -->
+<div class="split-layout" id="splitLayout">
+
+  <!-- ===== LEFT PANEL — FLOWISE CHATBOT ===== -->
+  <aside class="chat-sidebar" id="chatSidebar">
+
+    <!-- Resize Handle -->
+    <div class="chat-resize-handle" id="chatResizeHandle"></div>
+
+    <!-- Header -->
+    <div class="chat-sidebar-header">
+      <div class="chat-sidebar-brand">
+        <div class="chat-sidebar-avatar">🤖</div>
+        <div>
+          <div class="chat-sidebar-title">நலவறியும் AI உதவியாளர்</div>
+          <div class="chat-sidebar-status">
+            <span class="status-live-dot"></span>
+            Online — Flowise AI
+          </div>
+        </div>
+      </div>
+      <div class="chat-sidebar-actions">
+        <button class="csb-action-btn" onclick="reloadChatbot()" title="மீண்டும் ஏற்று">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M23 4v6h-6M1 20v-6h6"/>
+            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+          </svg>
+        </button>
+        <button class="csb-action-btn" onclick="openChatNewTab()" title="புதிய Tab-ல் திற">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chatbot iframe body -->
+    <div class="chat-sidebar-body">
+      <div class="chat-sidebar-loading" id="chatSidebarLoading">
+        <div class="csb-spinner"></div>
+        <p>AI உதவியாளர் தொடங்குகிறது...</p>
+      </div>
+      <iframe
+        id="chatFlowiseIframe"
+        src="https://cloud.flowiseai.com/chatbot/79a39e86-48c5-4fa3-98b4-97469a1aa2d0"
+        class="chat-flowise-iframe"
+        title="நலவறியும் AI Chatbot — Flowise"
+        frameborder="0"
+        allow="microphone"
+        onload="onChatIframeLoad()"
+      ></iframe>
+    </div>
+
+    <!-- Collapse/expand toggle -->
+    <button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChatSidebar()" title="Hide/Show Chat">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+  </aside>
+
+  <!-- ===== RIGHT PANEL — WEBSITE CONTENT ===== -->
+  <div class="content-panel" id="contentPanel">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <span class="logo-icon">🏛️</span>
+          <span class="logo-text">நலவறியும்</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-link">முகப்பு</a></li>
+          <li><a href="#schemes" class="nav-link">திட்டங்கள்</a></li>
+          <li><a href="#eligibility" class="nav-link">தகுதி</a></li>
+          <li><a href="#documents" class="nav-link">ஆவணங்கள்</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link">தொடர்பு</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            தமிழ்நாடு தொழிலாளர் நலவாரியம்
+          </div>
+          <h1 class="hero-title">
+            உங்கள் உரிமைகளை<br />
+            <span class="hero-gradient-text">நலவறியும் வழிகாட்டும்</span>
+          </h1>
+          <p class="hero-subtitle">
+            PDF-ல் உள்ள தகவல்களை அடிப்படையாக கொண்டு AI உதவியாளர்<br />
+            எல்லாவற்றையும் தமிழிலும் விளக்குகிறான்.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">6+</span>
+              <span class="stat-label">நல திட்டங்கள்</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">₹55,000</span>
+              <span class="stat-label">அதிகபட்ச உதவி</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">LWF</span>
+              <span class="stat-label">அங்கீகாரம்</span>
+            </div>
+          </div>
+          <div class="hero-buttons">
+            <a href="#schemes" class="btn btn-primary">
+              <span>திட்டங்கள் காண்க</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <button class="btn btn-secondary" onclick="document.getElementById('chatSidebar').scrollIntoView({behavior:'smooth'})">
+              <span>🤖 AI உதவியாளர்</span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card-float">
+            <div class="hcf-icon">🎓</div>
+            <div>
+              <div class="hcf-title">கல்வி உதவி திட்டம்</div>
+              <div class="hcf-sub">Rs. 6,000 – 18,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SCHEMES ===== -->
+    <section class="schemes-section" id="schemes">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">நல திட்டங்கள்</div>
+          <h2 class="section-title">LWF நல திட்டங்கள்</h2>
+          <p class="section-subtitle">தொழிலாளர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கான நல உதவி திட்டங்கள்</p>
+        </div>
+        <div class="schemes-grid" id="schemesGrid">
+          <!-- Dynamically rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ELIGIBILITY ===== -->
+    <section class="eligibility-section" id="eligibility">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">பொதுத் தகுதி</div>
+          <h2 class="section-title">யாருக்கு தகுதி உண்டு?</h2>
+          <p class="section-subtitle">அனைத்து திட்டங்களுக்கும் பொதுவான தகுதி நிபந்தனைகள்</p>
+        </div>
+        <div class="eligibility-grid">
+          <div class="eli-card">
+            <div class="eli-icon">👤</div>
+            <h3>வயது வரம்பு</h3>
+            <p>தொழிலாளர் வயது 60 வரை மட்டுமே தகுதி உண்டு</p>
+          </div>
+          <div class="eli-card">
+            <div class="eli-icon">💰</div>
+            <h3>சம்பள வரம்பு</h3>
+            <p>மாத சம்பளம் ரூ.35,000-க்கு மிகாமல் இருக்க வேண்டும்</p>
+          </div>
+          <div class="eli-card">
+            <div class="eli-icon">📋</div>
+            <h3>LWF பங்களிப்பு</h3>
+            <p>தொழிலாளர் நல நிதி (LWF) சந்தா செலுத்தியிருக்க வேண்டும்</p>
+          </div>
+          <div class="eli-card">
+            <div class="eli-icon">🏢</div>
+            <h3>நிறுவன வகை</h3>
+            <p>20+ பணியாளர்கள் உள்ள நிறுவனங்களில் பணிபுரிவோர்</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCUMENTS ===== -->
+    <section class="documents-section" id="documents">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">தேவையான ஆவணங்கள்</div>
+          <h2 class="section-title">பொதுவான ஆவணங்கள்</h2>
+          <p class="section-subtitle">அனைத்து திட்டங்களுக்கும் பொதுவாக தேவைப்படும் ஆவணங்கள்</p>
+        </div>
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-icon">🪪</div>
+            <h4>ஆதார் அட்டை</h4>
+            <p>தொழிலாளர் மற்றும் குடும்பத்தினர்</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">📒</div>
+            <h4>ரேஷன் அட்டை</h4>
+            <p>குடும்ப அடையாளத்திற்கு</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">🏦</div>
+            <h4>வங்கி பாஸ்புக்</h4>
+            <p>2 நகல்கள் தேவை</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">💼</div>
+            <h4>சம்பள சீட்டு</h4>
+            <p>LWF கழிப்பு உட்பட</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">🧾</div>
+            <h4>LWF ரசீது</h4>
+            <p>LWF சந்தா செலுத்திய சான்று</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h4>மார்க் ஷீட்</h4>
+            <p>10th / 12th மதிப்பெண் பட்டியல்</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">💒</div>
+            <h4>திருமண சான்றிதழ்</h4>
+            <p>பதிவு சான்றிதழ் + அழைப்பிதழ்</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">📜</div>
+            <h4>மரணச் சான்றிதழ்</h4>
+            <p>வாரிசு சான்றிதழ் உட்பட</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">🏫</div>
+            <h4>Bonafide சான்றிதழ்</h4>
+            <p>கல்வி நிறுவனத்தில் இருந்து</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">👓</div>
+            <h4>மருத்துவர் சீட்டு</h4>
+            <p>கண்ணாடி திட்டத்திற்கு மட்டும்</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">📸</div>
+            <h4>LWF பணம் கட்டிய ரசீது</h4>
+            <p>LWF காலாண்டுக்கான ரசீது</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-icon">📄</div>
+            <h4>விண்ணப்பப் படிவம்</h4>
+            <p>அலுவலகம் / இணையதளம் / பதிவிறக்கும்</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">அடிக்கடி கேட்கப்படும் கேள்விகள்</div>
+          <h2 class="section-title">FAQ - பொதுவான கேள்விகள்</h2>
+          <p class="section-subtitle">இந்த AI உதவியாளரிடம் நேரடியாகவும் கேட்கலாம்!</p>
+        </div>
+        <div class="faq-list" id="faqList">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">தொடர்பு கொள்ள</div>
+          <h2 class="section-title">அலுவலக தகவல்</h2>
+        </div>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="cc-icon">📧</div>
+            <h4>மின்னஞ்சல்</h4>
+            <p>lwf.tn@nic.in</p>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📞</div>
+            <h4>தொலைபேசி</h4>
+            <p>044 - 2345 6789</p>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📍</div>
+            <h4>முகவரி</h4>
+            <p>தொழிலாளர் ஆணையர் அலுவலகம், சென்னை</p>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">🕐</div>
+            <h4>நேரம்</h4>
+            <p>திங்கள் – வெள்ளி: 10am – 5pm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="footer-logo">
+                <span>🏛️</span>
+                <span>நலவறியும்</span>
+              </div>
+              <p>தமிழ்நாடு தொழிலாளர் நல அலுவலகம் – AI உதவியாளர் மூலம் திட்டங்களை எளிதாக அறியுங்கள்.</p>
+            </div>
+            <div class="footer-links">
+              <h4>திட்டங்கள் 🔗</h4>
+              <ul>
+                <li><a href="#schemes">புத்தக உதவி</a></li>
+                <li><a href="#schemes">கல்வி உதவி</a></li>
+                <li><a href="#schemes">திருமண உதவி</a></li>
+                <li><a href="#schemes">மரண உதவி</a></li>
+                <li><a href="#schemes">கண்ணாடி உதவி</a></li>
+              </ul>
+            </div>
+            <div class="footer-contact">
+              <h4>தொடர்பு</h4>
+              <div class="contact-item"><span>📧</span><span>lwf.tn@nic.in</span></div>
+              <div class="contact-item"><span>📞</span><span>044 - 2345 6789</span></div>
+              <div class="contact-item"><span>📍</span><span>தொழிலாளர் ஆணையர், சென்னை நகர்</span></div>
+              <div class="contact-item"><span>🕐</span><span>திங்கள் – வெள்ளி: 10am – 5pm</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© 2025 நலவறியும் – தமிழ்நாடு தொழிலாளர் நல அலுவலகம் மூலம் உருவாக்கப்பட்டது. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+      <div class="modal-box" id="modalBox" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" onclick="document.getElementById('contentPanel').scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  </div><!-- end .content-panel -->
+
+</div><!-- end .split-layout -->
+
+<script src="app.js"></script>
+<script>
+/* ===== SPLIT LAYOUT & CHAT SIDEBAR LOGIC ===== */
+
+const FLOWISE_URL = 'https://cloud.flowiseai.com/chatbot/79a39e86-48c5-4fa3-98b4-97469a1aa2d0';
+
+/* Iframe load callback */
+function onChatIframeLoad() {
+  const loading = document.getElementById('chatSidebarLoading');
+  if (loading) {
+    loading.classList.add('hidden');
+    setTimeout(() => loading.remove(), 500);
+  }
+}
+
+/* Reload chatbot */
+function reloadChatbot() {
+  const iframe = document.getElementById('chatFlowiseIframe');
+  const loading = document.getElementById('chatSidebarLoading');
+  if (loading) loading.classList.remove('hidden');
+  iframe.src = FLOWISE_URL;
+}
+
+/* Open chatbot in new tab */
+function openChatNewTab() {
+  window.open(FLOWISE_URL, '_blank');
+}
+
+/* Toggle sidebar collapse */
+let sidebarCollapsed = false;
+function toggleChatSidebar() {
+  const sidebar = document.getElementById('chatSidebar');
+  sidebarCollapsed = !sidebarCollapsed;
+  sidebar.classList.toggle('collapsed', sidebarCollapsed);
+  localStorage.setItem('chatSidebarCollapsed', sidebarCollapsed);
+}
+
+/* Restore sidebar state */
+(function() {
+  const saved = localStorage.getItem('chatSidebarCollapsed');
+  if (saved === 'true') {
+    const sidebar = document.getElementById('chatSidebar');
+    sidebar.classList.add('collapsed');
+    sidebarCollapsed = true;
+  }
+})();
+
+/* ===== RESIZABLE SIDEBAR ===== */
+(function() {
+  const handle = document.getElementById('chatResizeHandle');
+  const sidebar = document.getElementById('chatSidebar');
+  if (!handle || !sidebar) return;
+
+  let isResizing = false;
+  let startX, startW;
+
+  handle.addEventListener('mousedown', function(e) {
+    isResizing = true;
+    startX = e.clientX;
+    startW = sidebar.offsetWidth;
+    handle.classList.add('dragging');
+    document.body.classList.add('resizing');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isResizing) return;
+    const delta = e.clientX - startX;
+    const newW = Math.min(Math.max(startW + delta, 280), 600);
+    sidebar.style.width = newW + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    if (!isResizing) return;
+    isResizing = false;
+    handle.classList.remove('dragging');
+    document.body.classList.remove('resizing');
+    localStorage.setItem('chatSidebarWidth', sidebar.offsetWidth);
+  });
+
+  // Restore saved width
+  const savedW = localStorage.getItem('chatSidebarWidth');
+  if (savedW) sidebar.style.width = savedW + 'px';
+})();
+
+/* ===== NAVBAR SCROLL — scoped to content panel ===== */
+const contentPanel = document.getElementById('contentPanel');
+contentPanel.addEventListener('scroll', function() {
+  const nav = document.getElementById('navbar');
+  const backTop = document.getElementById('backToTop');
+  if (contentPanel.scrollTop > 60) {
+    nav.classList.add('scrolled');
+    if (backTop) backTop.classList.add('visible');
+  } else {
+    nav.classList.remove('scrolled');
+    if (backTop) backTop.classList.remove('visible');
+  }
+});
+
+/* Hamburger mobile menu */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
