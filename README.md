@@ -49,6 +49,3 @@ You can interact with the live AI Chatbot and explore the welfare schemes by vis
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/chandruch1/nala-vaariyum-chatbot/issues) if you want to contribute.
 
-## 📜 License
-
-© 2026 Nala Vaariyum. All rights reserved.
