@@ -1,47 +1,61 @@
-🏛️ Nala Vaariyum (நலவறியும்) - Labour Welfare AI Portal
+# 🏛️ Nala Vaariyum (நலவறியும்) - Labour Welfare AI Portal
 
-Nala Vaariyum
- is a specialized web portal and AI-powered information center designed to help workers in Tamil Nadu easily understand, navigate, and apply for various state-sponsored labour welfare schemes.
+**[Nala Vaariyum](https://nala-vaariyum-chatbot-ruddy.vercel.app/)** is a specialized web portal and AI-powered information center designed to help workers in Tamil Nadu easily understand, navigate, and apply for various state-sponsored labour welfare schemes.
 
 By leveraging a highly responsive UI and a dedicated AI Chatbot, the platform breaks down complex PDF guidelines into simple, easy-to-understand information available in both Tamil and English.
 
-✨ Key Features
-🤖 Integrated AI Chatbot: An intelligent assistant ready to answer questions about eligibility, deadlines, claim amounts, and required documents. Available directly at nala-vaariyum-chatbot-ruddy.vercel.app
-.
-📋 Scheme Directory: Browse through all welfare schemes (Book Allowance, Educational Assistance, Marriage Assistance, Natural Death and Spectacles Reimbursement) in a clear, card-based interface.
-🔍 Quick Search & Filter: Instantly find exact schemes by typing keywords or categories.
-📱 Fully Responsive Design: Modern, sleek interface built with responsive grids and side-by-side split layouts for both desktop and mobile users.
-📘 Bilingual Support: Scheme details and the AI assistant seamlessly operate in both Tamil and English to support a wider demographic.
-🛠️ Technology Stack
-Frontend: HTML5, Vanilla CSS3 (Custom Variables, Flexbox, CSS Grid), Vanilla JavaScript (ES6+).
-AI Chatbot Integration: Embedded AI Chatbot (Accessible via Web Link
-).
-🚀 Live Demo
+---
 
-You can interact with the live AI Chatbot and explore the welfare schemes by visiting the application here:
+## ✨ Key Features
 
-👉 Nala Vaariyum Chatbot Application
+- **🤖 Integrated AI Chatbot:** An intelligent assistant ready to answer questions about eligibility, deadlines, claim amounts, and required documents.
+- **📋 Scheme Directory:** Browse welfare schemes in a clear card-based interface.
+- **🔍 Quick Search & Filter:** Instantly find schemes using keywords.
+- **📱 Fully Responsive Design:** Works smoothly on desktop and mobile.
+- **📘 Bilingual Support:** Supports both Tamil and English users.
 
-🎥 Tutorial Videos
+---
 
-Learn how the chatbot works and project walkthrough here:
+## 🛠️ Technology Stack
 
-📹 Tutorial Video 1: Watch Here
-📹 Tutorial Video 2: Watch Here
-📂 Project Structure
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Deployment:** Vercel
+- **AI Chatbot:** Embedded chatbot integration
+
+---
+
+## 🚀 Live Demo
+
+👉 **Website:** https://nala-vaariyum-chatbot-ruddy.vercel.app/
+
+---
+
+## 🎥 Tutorial Videos
+
+### ▶️ Chatbot Tutorial Video 1
+https://drive.google.com/file/d/1UmhB9FMFyMB7f1PipRXcrvcCTtO7D08E/view?usp=drive_link
+
+### ▶️ Chatbot Tutorial Video 2
+https://drive.google.com/file/d/1tNU0t_AQP1kN7QDpXGRkr2yWbB1C3fKL/view?usp=drive_link
+
+---
+
+## 📂 Project Structure
+
+```text
 📁 welfare_website
-├── 📄 index.html      # Main Web Portal and layout structure
-├── 🎨 style.css       # Core typography, colors, and styling variables
-├── 🎨 layout.css      # Desktop/Mobile structural layouts and Sidebar CSS
-├── 📜 app.js          # Scheme data rendering, search logic, and modal popups
-└── 📄 README.md       # Project documentation
+├── 📄 index.html
+├── 🎨 style.css
+├── 🎨 layout.css
+├── 📜 app.js
+└── 📄 README.md
+
 ⚙️ How to Run Locally
-Clone this repository:
 git clone https://github.com/chandruch1/nala-vaariyum-chatbot.git
-Navigate into the project folder:
 cd nala-vaariyum-chatbot
-Open index.html in your browser, or use VS Code Live Server.
+
+Then open index.html in browser.
+
 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page
-.
+Contributions, issues, and suggestions are welcome.
